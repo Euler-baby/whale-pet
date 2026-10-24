@@ -1,0 +1,242 @@
+/*
+ * 简易使用教程（0.4.1；独立普通窗约 560×620）
+ *
+ * 浅蓝紫、圆角卡片、清晰层级；页面整体可滚动，150% DPI 下字号/行距保持可读，
+ * 不设横向固定宽度避免横向溢出；不依赖第三方图标或素材。
+ */
+:root {
+  color-scheme: light;
+  --bg: #f5f7ff;
+  --card: #fff;
+  --line: #e3e8f8;
+  --text: #16224a;
+  --muted: #5b6a94;
+  --faint: #8b93a7;
+  --primary: #4d6bfe;
+  --primary-soft: #eaf0ff;
+  --purple: #6b3fc4;
+  --purple-soft: #f1eafe;
+  font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 0%, #eef2ff 0, transparent 46%),
+    radial-gradient(circle at 92% 4%, #f3edff 0, transparent 42%), var(--bg);
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+.tutorial {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 100%;
+  padding: 18px 20px 20px;
+}
+
+/* ---------- 头部 ---------- */
+
+.tutorial__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tutorial__title {
+  margin: 0;
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.tutorial__subtitle {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.tutorial__meta {
+  color: var(--faint);
+  font-size: 12px;
+}
+
+/* ---------- 目录 ---------- */
+
+.tutorial__nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.tutorial__nav-link {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: #2f4bc0;
+  font-size: 12px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tutorial__nav-link:hover,
+.tutorial__nav-link:focus-visible {
+  background: var(--primary);
+  color: #fff;
+  outline: none;
+}
+
+/* ---------- 卡片 ---------- */
+
+.tutorial__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tutorial-card {
+  padding: 12px 14px 10px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: 0 2px 10px rgba(37, 56, 111, 0.05);
+}
+
+.tutorial-card__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.tutorial-card__index {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: linear-gradient(150deg, var(--primary) 0%, var(--purple) 100%);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tutorial-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tutorial-card__item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #f9faff;
+}
+
+.tutorial-card__item:nth-child(even) {
+  background: #fbf9ff;
+}
+
+.tutorial-card__label {
+  flex: 0 0 auto;
+  min-width: 72px;
+  color: var(--purple);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tutorial-card__text {
+  flex: 1;
+  min-width: 0;
+  color: #34406a;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- 底部 ---------- */
+
+.tutorial__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.tutorial__footer-text {
+  margin: 0;
+  color: var(--faint);
+  font-size: 12px;
+}
+
+.tutorial__close {
+  padding: 6px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.tutorial__close:hover {
+  background: #3f5ae0;
+}
+
+.tutorial__close:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ---------- 窄宽/大字号兜底 ---------- */
+
+@media (max-width: 460px) {
+  .tutorial {
+    padding: 14px 14px 16px;
+  }
+
+  .tutorial-card__item {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .tutorial-card__label {
+    min-width: 0;
+  }
+}

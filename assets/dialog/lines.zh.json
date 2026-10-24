@@ -1,0 +1,266 @@
+[
+  {
+    "id": "idle.01",
+    "state": "idle",
+    "slot": "any",
+    "zh": "我在这里陪着你，慢慢来就好。",
+    "weight": 3,
+    "tags": ["companion"]
+  },
+  {
+    "id": "idle.02",
+    "state": "idle",
+    "slot": "any",
+    "zh": "今天也一起加油吧。",
+    "weight": 3
+  },
+  {
+    "id": "idle.03",
+    "state": "idle",
+    "slot": "morning",
+    "zh": "早安，今天想先做哪一件小事？",
+    "weight": 2,
+    "tags": ["morning"]
+  },
+  {
+    "id": "idle.04",
+    "state": "idle",
+    "slot": "day",
+    "zh": "学累了就看看我，我比题目可爱。",
+    "weight": 2
+  },
+  {
+    "id": "idle.05",
+    "state": "idle",
+    "slot": "evening",
+    "zh": "晚上好，今天已经很努力了。",
+    "weight": 2
+  },
+  {
+    "id": "idle.06",
+    "state": "idle",
+    "slot": "late",
+    "zh": "夜深了，早点休息也可以的。",
+    "weight": 2
+  },
+  {
+    "id": "happy.01",
+    "state": "happy",
+    "slot": "any",
+    "zh": "嘿嘿，被摸头的感觉真好～",
+    "weight": 2
+  },
+  {
+    "id": "happy.02",
+    "state": "happy",
+    "slot": "any",
+    "zh": "你完成了！我就知道你可以。",
+    "weight": 3,
+    "tags": ["plan.done"]
+  },
+  {
+    "id": "happy.03",
+    "state": "happy",
+    "slot": "any",
+    "zh": "今天的小鲸鱼开心到冒泡！",
+    "weight": 2
+  },
+  {
+    "id": "happy.04",
+    "state": "happy",
+    "slot": "morning",
+    "zh": "早起的你，今天一定有好事。",
+    "weight": 1
+  },
+  {
+    "id": "happy.05",
+    "state": "happy",
+    "slot": "evening",
+    "zh": "忙完一天啦，快夸夸自己。",
+    "weight": 1
+  },
+  {
+    "id": "happy.06",
+    "state": "happy",
+    "slot": "late",
+    "zh": "这么晚还陪着我，谢谢你呀。",
+    "weight": 1
+  },
+  {
+    "id": "sleepy.01",
+    "state": "sleepy",
+    "slot": "any",
+    "zh": "呼……让我眯五分钟……",
+    "weight": 2
+  },
+  {
+    "id": "sleepy.02",
+    "state": "sleepy",
+    "slot": "any",
+    "zh": "哈啊——眼睛快睁不开了……",
+    "weight": 2
+  },
+  {
+    "id": "sleepy.03",
+    "state": "sleepy",
+    "slot": "evening",
+    "zh": "天黑啦，鲸鱼也要回深海了。",
+    "weight": 2
+  },
+  {
+    "id": "sleepy.04",
+    "state": "sleepy",
+    "slot": "late",
+    "zh": "困了就睡吧，明天我帮你记着。",
+    "weight": 3,
+    "tags": ["late"]
+  },
+  {
+    "id": "sleepy.05",
+    "state": "sleepy",
+    "slot": "late",
+    "zh": "晚安，做个有鲸鱼的好梦。",
+    "weight": 2
+  },
+  {
+    "id": "sleepy.06",
+    "state": "sleepy",
+    "slot": "day",
+    "zh": "午后有点困，一起打个盹吧。",
+    "weight": 1
+  },
+  {
+    "id": "focus.01",
+    "state": "focus",
+    "slot": "any",
+    "zh": "专注模式启动，我帮你看着时间。",
+    "weight": 3,
+    "tags": ["focus"]
+  },
+  {
+    "id": "focus.02",
+    "state": "focus",
+    "slot": "any",
+    "zh": "这二十五分钟只属于你。",
+    "weight": 3
+  },
+  {
+    "id": "focus.03",
+    "state": "focus",
+    "slot": "any",
+    "zh": "嘘，我把气泡都收起来啦。",
+    "weight": 2
+  },
+  {
+    "id": "focus.04",
+    "state": "focus",
+    "slot": "day",
+    "zh": "一轮结束我会叫你，放心冲。",
+    "weight": 2
+  },
+  {
+    "id": "focus.05",
+    "state": "focus",
+    "slot": "morning",
+    "zh": "上午的脑子最好用，开始吧。",
+    "weight": 1
+  },
+  {
+    "id": "focus.06",
+    "state": "focus",
+    "slot": "evening",
+    "zh": "晚上的专注，鲸鱼也陪你。",
+    "weight": 1
+  },
+  {
+    "id": "remind.01",
+    "state": "remind",
+    "slot": "any",
+    "zh": "叮——我们约好的时间到了。",
+    "weight": 3,
+    "tags": ["reminder"]
+  },
+  {
+    "id": "remind.02",
+    "state": "remind",
+    "slot": "any",
+    "zh": "起来喝口水吧，我替你着急。",
+    "weight": 2,
+    "tags": ["water"]
+  },
+  {
+    "id": "remind.03",
+    "state": "remind",
+    "slot": "any",
+    "zh": "休息五分钟，回来继续。",
+    "weight": 2
+  },
+  {
+    "id": "remind.04",
+    "state": "remind",
+    "slot": "day",
+    "zh": "看远处二十秒，眼睛会谢谢你。",
+    "weight": 2,
+    "tags": ["eye"]
+  },
+  {
+    "id": "remind.05",
+    "state": "remind",
+    "slot": "evening",
+    "zh": "该收个尾啦，别太晚。",
+    "weight": 1
+  },
+  {
+    "id": "remind.06",
+    "state": "remind",
+    "slot": "late",
+    "zh": "很晚啦，明天再继续也一样。",
+    "weight": 1
+  },
+  {
+    "id": "celebrate.01",
+    "state": "celebrate",
+    "slot": "any",
+    "zh": "打卡成功！今天也做到了。",
+    "weight": 3,
+    "tags": ["checkin"]
+  },
+  {
+    "id": "celebrate.02",
+    "state": "celebrate",
+    "slot": "any",
+    "zh": "啪——放烟花，一起庆祝！",
+    "weight": 2
+  },
+  {
+    "id": "celebrate.03",
+    "state": "celebrate",
+    "slot": "any",
+    "zh": "三件事全部完成，你太棒了！",
+    "weight": 2,
+    "tags": ["plan.all_done"]
+  },
+  {
+    "id": "celebrate.04",
+    "state": "celebrate",
+    "slot": "any",
+    "zh": "又见面一天，这是我们的记录。",
+    "weight": 1,
+    "tags": ["milestone"]
+  },
+  {
+    "id": "celebrate.05",
+    "state": "celebrate",
+    "slot": "morning",
+    "zh": "清晨就完成计划，今天稳了。",
+    "weight": 1
+  },
+  {
+    "id": "celebrate.06",
+    "state": "celebrate",
+    "slot": "evening",
+    "zh": "复盘完成，去好好休息吧。",
+    "weight": 2,
+    "tags": ["review"]
+  }
+]

@@ -1,0 +1,9 @@
+# 素材来源与许可
+
+几何占位PNG、图标及中文台词为本项目生成/编写，随代码MIT。几何占位生成脚本为scripts/gen-placeholder-assets.py。
+
+whale-girl-v1与whale-girl-actions-v1角色图片为AI参考生成、机械加工，不自动适用代码MIT。第三方角色/品牌权利未因AI生成获得额外授权。详见仓库根NOTICE；本项目不是DeepSeek官方产品。
+
+whale-girl-actions-v1保留图集、逐帧文件、提示词和build.cjs；重建素材需另装sharp，可通过WHALE_SHARP_PATH指定。常规构建使用已生成的PNG/WebP，无须重建素材。
+
+whale-girl-rig-v1为未启用的分层实验规格，运行时仍使用整图动画。

@@ -1,0 +1,117 @@
+/*
+ * 打卡卡片（0.4.2 UI2）——独立样式文件，避免与并行改动的 tasks.css 冲突。
+ *
+ * 结构：名称 + 频率短语（head）→ 当前状态 + 打卡/展开（bar）→ 展开后的详情（details）。
+ * 基线样式仍在 tasks.css（.habit-card / .habit-card__name / .btn 等）；
+ * 这里只用复合选择器（两个 class）覆盖同名的基线属性，不依赖两份 CSS 的加载顺序。
+ * 尺寸全部用相对单位/弹性布局：默认窗口 900×680、最小 720×480、150% DPI 均不横向溢出。
+ */
+
+/* 收起：紧凑两行；展开：增加详情间距 */
+.habit-card.habit-card--collapsed {
+  gap: 0;
+  padding: 8px 12px;
+}
+
+.habit-card.habit-card--expanded {
+  gap: 6px;
+}
+
+/* 收起态的状态行：状态文字在左，打卡/展开在右 */
+.habit-card__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+  margin-top: 6px;
+}
+
+.habit-card.habit-card--collapsed .habit-card__head {
+  flex-wrap: nowrap;
+}
+
+/* 名称可收缩（长名称换行），频率短语不压缩；窄窗口/150% DPI 不横向溢出 */
+.habit-card__head .habit-card__name {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.habit-card__head .habit-card__frequency {
+  flex: 0 0 auto;
+}
+
+.habit-card__bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+/* 展开按钮：弱化为次要操作，不与「本期打卡」抢主色 */
+.habit-card .habit-card__expand {
+  border-color: #d4dcf2;
+  background: #fff;
+  color: var(--muted, #5b6a94);
+}
+
+.habit-card .habit-card__expand:hover:not(:disabled) {
+  background: #eef2ff;
+  color: #25386f;
+}
+
+/* 展开后的详情区：本期起止/备注/下期生效/已打卡时间/编辑历史删除 */
+.habit-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line-soft, #e6ecf8);
+  animation: habit-details-in 140ms ease-out both;
+}
+
+@keyframes habit-details-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.habit-card__details .habit-card__note {
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #f7f9ff;
+}
+
+.habit-card__checked-at {
+  margin: 0;
+  color: var(--muted, #5b6a94);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+/* 详情里的操作按钮：右侧对齐（窄窗口/150% DPI 可换行） */
+.habit-card__details .habit-card__actions {
+  padding-top: 2px;
+}
+
+/* 窄窗口：状态行按钮可整体落到下一行，避免挤压频率短语 */
+@media (max-width: 780px) {
+  .habit-card.habit-card--collapsed .habit-card__head {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .habit-card__details {
+    animation: none;
+  }
+}

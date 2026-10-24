@@ -1,0 +1,15 @@
+node_modules/
+out/
+dist/
+coverage/
+test-results/
+playwright-report/
+spike-output/
+.tools/
+pnpm-lock.yaml
+assets/
+docs/
+*.md
+LICENSE
+NOTICE
+CODEOWNERS

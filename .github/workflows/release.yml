@@ -1,0 +1,34 @@
+name: release
+
+# M0：手工/标签触发的免安装包构建与产物上传；签名与自动更新在 P1/M4 接入（PLAN §12 风险 8）。
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  dist:
+    name: dist (NSIS + portable)
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.3.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Build & package
+        run: pnpm dist
+      - name: Upload installers
+        uses: actions/upload-artifact@v4
+        with:
+          name: whale-pet-${{ github.ref_name }}
+          path: dist/*.exe
+          if-no-files-found: error

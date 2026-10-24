@@ -1,0 +1,16 @@
+{
+  "tool": "image_gen.imagegen (Codex built-in)",
+  "model": "not exposed by tool input or result; image2 unverified",
+  "date": "2026-10-22",
+  "references": [
+    "docs/art/whale-girl-v1/concept.png",
+    "docs/art/whale-girl-animation-v1/contact-sheet.png"
+  ],
+  "transparentBackground": true,
+  "prompts": {
+    "pat": "Create a production sprite atlas for the SAME chibi blue-haired whale girl in reference image 1, matching reference image 2's exact character, blue maid dress, whale tail and blue whale plush. Transparent background. Four distinct sequential key poses for a gentle HEAD PAT reaction, laid out as a clean exact 2 by 2 grid, one full body character in each quadrant, evenly centered with generous safe margins and identical scale and feet baseline. Reading order top-left, top-right, bottom-left, bottom-right: neutral beginning; eyelids soften and head tilts slightly toward unseen hand; closed happy eyes with small blush and gentle lean while still holding plush; return near neutral. No visible hand, no text, no watermarks, no props beyond her existing whale plush, no background, no grid lines, no duplicate limbs, no cropping. Keep every quadrant independent with broad transparent gutters for mechanical extraction.",
+    "celebrate": "Create a transparent 2x2 sprite atlas, four sequential full-body key poses, of EXACTLY the same chibi blue-haired whale girl in the reference, same blue maid outfit, blue whale tail, blue whale plush, frontal three-quarter view, same character scale and feet baseline in each quadrant. A small joyful celebration after completing a task: neutral smile; raise the whale plush a little and brighten expression; tiny hop with closed smiling eyes; settle back to calm happy pose. Read left-to-right then top-to-bottom. Four complete independent figures with generous transparent gutters. No text, no background, no new props, no grid lines, no duplicate limbs, no cropping or watermarks.",
+    "concern": "Create a transparent 2x2 sprite atlas, four sequential full-body key poses, of EXACTLY the same chibi blue-haired whale girl in the reference, same blue maid outfit, blue whale tail, blue whale plush, frontal three-quarter view, same character scale and feet baseline in each quadrant. Gentle concern on noticing an urgent task: neutral beginning; eyebrows rise mildly; lean forward slightly and hug existing whale plush a little closer; relax toward neutral. Cute and caring, not distressing. Read left-to-right then top-to-bottom. Four complete independent figures with generous transparent gutters. No text, no sign, no background, no new props, no grid lines, no duplicate limbs, no cropping or watermarks.",
+    "idle-look": "Create a transparent 2x2 sprite atlas, four sequential full-body key poses, of EXACTLY the same chibi blue-haired whale girl in the reference, same blue maid outfit, blue whale tail, blue whale plush, frontal three-quarter view, same character scale and feet baseline in each quadrant. Very subtle quiet idle variation: normal neutral gaze; glance toward viewer with small head tilt; blink and gentle whale tail sway; return near original idle pose. Read left-to-right then top-to-bottom. Four complete independent figures with generous transparent gutters. No text, no background, no new props, no grid lines, no duplicate limbs, no cropping or watermarks."
+  }
+}

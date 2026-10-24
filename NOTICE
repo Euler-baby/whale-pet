@@ -1,0 +1,15 @@
+# 第三方与素材说明
+
+代码与几何占位素材采用MIT（见LICENSE），版权为whale-pet contributors。
+
+## 角色素材
+
+assets/sprites/whale-girl-v1及whale-girl-actions-v1中的图片由AI图像生成工具基于角色参考制作，经切帧、对齐和编码用于本项目。工具未暴露可核实的底层模型版本。图集、提示词、编码参数随相关素材目录保留。
+
+这些角色图片不自动归入代码MIT许可。AI生成不授予第三方角色、参考图或品牌的额外权利，本项目不声明获得此类授权；需要独立使用、再分发或商业使用时应自行确认相关权利。whale-girl-rig-v1仅为未启用的实验规格，不是已完成动画。
+
+本项目不是DeepSeek官方产品。没有复制DSH插件或其他项目的图片、模型、SDK作为运行素材。
+
+## 依赖许可
+
+Electron及Chromium等运行时许可随发布包提供。React采用MIT，zod采用MIT；完整依赖版本见pnpm-lock.yaml，各依赖许可随其软件包提供。代码MIT不替代第三方许可。

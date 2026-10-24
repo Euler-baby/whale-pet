@@ -1,0 +1,370 @@
+{
+  "size": 480,
+  "anchor": {
+    "cx": 231,
+    "bottom": 456
+  },
+  "baseIdle": {
+    "left": 33,
+    "top": 36,
+    "width": 397,
+    "height": 420,
+    "bottom": 455,
+    "cx": 231
+  },
+  "actions": {
+    "pat": {
+      "scale": 0.9814814814814815,
+      "frameCount": 8,
+      "delay": [
+        40,
+        150,
+        105,
+        75,
+        210,
+        110,
+        150,
+        100
+      ],
+      "frameStats": [
+        {
+          "left": 33,
+          "top": 36,
+          "width": 397,
+          "height": 420,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 14,
+          "top": 32,
+          "width": 435,
+          "height": 424,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 22,
+          "top": 32,
+          "width": 419,
+          "height": 424,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 25,
+          "top": 38,
+          "width": 412,
+          "height": 418,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 17,
+          "top": 37,
+          "width": 429,
+          "height": 419,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 26,
+          "top": 37,
+          "width": 410,
+          "height": 419,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 18,
+          "top": 30,
+          "width": 426,
+          "height": 426,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 33,
+          "top": 36,
+          "width": 397,
+          "height": 420,
+          "bottom": 455,
+          "cx": 231
+        }
+      ],
+      "totalMs": 940,
+      "loop": 1,
+      "width": 480,
+      "pageHeight": 480,
+      "hasAlpha": true,
+      "bytes": 454756,
+      "stillBytes": 379367,
+      "firstLastExact": true
+    },
+    "celebrate": {
+      "scale": 1.014354066985646,
+      "frameCount": 8,
+      "delay": [
+        40,
+        145,
+        100,
+        75,
+        220,
+        120,
+        165,
+        105
+      ],
+      "frameStats": [
+        {
+          "left": 33,
+          "top": 36,
+          "width": 397,
+          "height": 420,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 26,
+          "top": 32,
+          "width": 410,
+          "height": 424,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 39,
+          "top": 35,
+          "width": 385,
+          "height": 421,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 33,
+          "top": 21,
+          "width": 396,
+          "height": 435,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 23,
+          "top": 32,
+          "width": 416,
+          "height": 424,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 21,
+          "top": 49,
+          "width": 421,
+          "height": 407,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 26,
+          "top": 53,
+          "width": 411,
+          "height": 403,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 33,
+          "top": 36,
+          "width": 397,
+          "height": 420,
+          "bottom": 455,
+          "cx": 231
+        }
+      ],
+      "totalMs": 970,
+      "loop": 1,
+      "width": 480,
+      "pageHeight": 480,
+      "hasAlpha": true,
+      "bytes": 427616,
+      "stillBytes": 342416,
+      "firstLastExact": true
+    },
+    "concern": {
+      "scale": 0.9724770642201835,
+      "frameCount": 8,
+      "delay": [
+        40,
+        140,
+        105,
+        80,
+        220,
+        125,
+        170,
+        110
+      ],
+      "frameStats": [
+        {
+          "left": 33,
+          "top": 36,
+          "width": 397,
+          "height": 420,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 31,
+          "top": 38,
+          "width": 400,
+          "height": 418,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 27,
+          "top": 36,
+          "width": 409,
+          "height": 420,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 26,
+          "top": 40,
+          "width": 410,
+          "height": 416,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 33,
+          "top": 45,
+          "width": 397,
+          "height": 411,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 32,
+          "top": 41,
+          "width": 398,
+          "height": 415,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 28,
+          "top": 33,
+          "width": 407,
+          "height": 423,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 33,
+          "top": 36,
+          "width": 397,
+          "height": 420,
+          "bottom": 455,
+          "cx": 231
+        }
+      ],
+      "totalMs": 990,
+      "loop": 1,
+      "width": 480,
+      "pageHeight": 480,
+      "hasAlpha": true,
+      "bytes": 431310,
+      "stillBytes": 332909,
+      "firstLastExact": true
+    },
+    "idle-look": {
+      "scale": 0.9906542056074766,
+      "frameCount": 8,
+      "delay": [
+        55,
+        200,
+        165,
+        145,
+        280,
+        170,
+        260,
+        180
+      ],
+      "frameStats": [
+        {
+          "left": 33,
+          "top": 36,
+          "width": 397,
+          "height": 420,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 29,
+          "top": 28,
+          "width": 405,
+          "height": 428,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 26,
+          "top": 29,
+          "width": 410,
+          "height": 427,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 28,
+          "top": 30,
+          "width": 406,
+          "height": 426,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 26,
+          "top": 28,
+          "width": 411,
+          "height": 428,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 20,
+          "top": 26,
+          "width": 423,
+          "height": 430,
+          "bottom": 455,
+          "cx": 231
+        },
+        {
+          "left": 20,
+          "top": 28,
+          "width": 422,
+          "height": 428,
+          "bottom": 455,
+          "cx": 230.5
+        },
+        {
+          "left": 33,
+          "top": 36,
+          "width": 397,
+          "height": 420,
+          "bottom": 455,
+          "cx": 231
+        }
+      ],
+      "totalMs": 1455,
+      "loop": 1,
+      "width": 480,
+      "pageHeight": 480,
+      "hasAlpha": true,
+      "bytes": 433238,
+      "stillBytes": 339051,
+      "firstLastExact": true
+    }
+  },
+  "note": "One scale per action; silhouettes centered on base idle. Exact idle endpoints."
+}

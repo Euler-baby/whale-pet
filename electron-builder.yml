@@ -1,0 +1,40 @@
+# electron-builder 配置（Lead 维护）
+# 关键口径见 docs/05 §6/§7：appId 必须与 app.setAppUserModelId 一致；assets 走 extraResources；
+# v1 无原生模块（better-sqlite3 移出主链），不配置 asarUnpack；MVP 不签名（README 说明 SmartScreen）。
+appId: com.deepseek.whalepet
+productName: DeepSeek Whale Pet
+copyright: Copyright © 2026 whale-pet contributors
+directories:
+  buildResources: build
+  output: dist
+files:
+  - out/**/*
+  - package.json
+  - LICENSE
+  - NOTICE
+extraResources:
+  - from: assets
+    to: assets
+asar: true
+win:
+  icon: build/icon.ico
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+nsis:
+  include: build/installer.nsh
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  deleteAppDataOnUninstall: false
+  artifactName: ${productName}-${version}-setup.${ext}
+portable:
+  artifactName: ${productName}-${version}-portable.${ext}
+# 自动更新 P1 才接；MVP 不配置 publish，避免 tag 构建时误上传。
+publish: null

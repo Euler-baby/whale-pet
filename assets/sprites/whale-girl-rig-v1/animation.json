@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "status": "design-only-unvalidated",
+  "action": "celebrate",
+  "durationMs": 1350,
+  "poseBlendOutMs": 130,
+  "beats": [
+    { "at": 0, "name": "idle" },
+    { "at": 180, "name": "anticipation", "bodyY": 9 },
+    { "at": 590, "name": "accelerate", "bodyY": -20, "armsRotation": 38, "plushY": -72 },
+    { "at": 650, "name": "overshoot", "bodyY": -26, "armsRotation": 43, "plushY": -82 },
+    { "at": 700, "name": "peak", "bodyY": -22, "armsRotation": 39, "plushY": -76 },
+    { "at": 1220, "name": "recovery", "bodyY": 0 },
+    { "at": 1350, "name": "idle", "bodyY": 0 }
+  ],
+  "secondaryDelayMs": { "tail": 200, "hair-back": 180, "hair-front": 150 }
+}

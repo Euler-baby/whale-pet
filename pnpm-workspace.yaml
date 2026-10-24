@@ -1,0 +1,13 @@
+# 单包仓库；承载 pnpm 配置（pnpm 12：allowBuilds / nodeLinker）
+# nodeLinker=hoisted：Windows 上避免 pnpm 12 的 junction 虚拟 store 在深层依赖图上不稳定
+#   （本机实测 isolated 链接层出现 stack overflow / 损坏），CI 与本地保持一致。
+# 允许 esbuild 运行安装脚本（平台二进制）。
+# electron 44 不再有 postinstall，二进制在首次 require 时懒下载（install.js）。
+# electron-winstaller 属 Squirrel 打包链，本项目用 NSIS/portable，禁止其脚本。
+nodeLinker: hoisted
+allowBuilds:
+  electron: false
+  esbuild: true
+  electron-winstaller: false
+onlyBuiltDependencies:
+  - esbuild

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      CSP（PLAN §3 / 02 §2.3）：
+      - 禁 unsafe-eval 与远程源；style-src 允许 unsafe-inline 以支持气泡内联样式
+      - connect-src 的 ws: 仅供 dev HMR；生产收紧由 main 的 session header 负责（M1）
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; connect-src 'self' ws:"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepSeek 鲸鱼娘桌宠</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

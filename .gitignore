@@ -1,0 +1,48 @@
+# 依赖与构建产物（不提交）
+node_modules/
+.pnpm-store/
+.tools/
+out/
+dist/
+test-results/
+playwright-report/
+coverage/
+.vite/
+*.tsbuildinfo
+
+# 本地数据与运行时
+data/
+*.db
+*.db-wal
+*.db-shm
+logs/
+*.log
+
+# spike 产物（截图/报告可复现，不提交二进制）
+spike-output/
+
+# image_gen 工具输出（Codex 工作目录，非项目素材，不提交）
+output/
+
+# 环境与编辑器
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Private runtime and local publication staging
+**/tasks.json
+**/settings.json
+**/backups/
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*
+*.sddl
+*.dmp

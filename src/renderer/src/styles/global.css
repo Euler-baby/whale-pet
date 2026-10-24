@@ -1,0 +1,675 @@
+/*
+ * 全局样式（M0）
+ *
+ * 口径：PLAN §6 窗口 320×400 DIP；03 §8 精灵区 240×240、气泡区 300×140、
+ * 气泡圆角 12px / 最大宽 280 / 字号 13px；body 透明、无滚动、禁选中、no-drag。
+ * 内部图片层播放透明三态关键帧动画，配合轻微 CSS 呼吸/摇摆；命中盒静止。
+ */
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #12204a;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-app-region: no-drag;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+.app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 4px 0 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+/* ---------- 精灵区：240×240 居中 ---------- */
+
+.pet-area {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 240px;
+  height: 240px;
+}
+
+.pet-sprite {
+  display: grid;
+  place-items: center;
+  width: 240px;
+  height: 240px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+/* 命中盒保持静止：动画只作用于内部 body（docs/14：动效移动底边会让边缘点击落到父容器） */
+.pet-sprite__body {
+  display: grid;
+  place-items: center;
+  width: 240px;
+  height: 240px;
+  transform-origin: 50% 95%;
+  animation: pet-breathe 3.2s ease-in-out infinite;
+}
+
+.pet-sprite:focus-visible {
+  border-radius: 50%;
+  outline: 2px solid #4d6bfe;
+  outline-offset: -6px;
+}
+
+.pet-sprite__visual,
+.pet-sprite__image,
+.pet-sprite__outgoing {
+  display: block;
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.pet-sprite__visual {
+  position: relative;
+  transform-origin: 50% 95%;
+  transition: transform 120ms ease-out;
+}
+
+/* Rig 采用与整图一致的 480 坐标，整体显示缩半；只允许视觉层变换。 */
+.pet-rig {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 480px;
+  height: 480px;
+  transform: scale(0.5);
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+.pet-rig__layer {
+  position: absolute;
+  inset: 0;
+  width: 480px;
+  height: 480px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.pet-sprite__outgoing {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity 80ms ease-in-out;
+}
+
+.pet-sprite__image {
+  opacity: 1;
+  transition: opacity 80ms ease-in-out;
+}
+
+.pet-sprite__visual[data-transitioning='true'][data-ready='false'] .pet-sprite__image {
+  opacity: 0;
+}
+
+.pet-sprite__visual[data-transitioning='true'][data-ready='true'] .pet-sprite__outgoing {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pet-sprite__image,
+  .pet-sprite__outgoing {
+    transition: none;
+  }
+}
+
+/* 图片加载失败时的纯 CSS 兜底色块（不画表情，只保证界面不空） */
+.pet-sprite__fallback {
+  display: block;
+  width: 168px;
+  height: 168px;
+  border-radius: 50% 50% 46% 46%;
+  background: linear-gradient(160deg, #7e96ff 0%, #4d6bfe 72%);
+  box-shadow: 0 10px 22px rgba(43, 63, 158, 0.28);
+}
+
+.pet-sprite--dimmed {
+  filter: grayscale(0.55) opacity(0.75);
+}
+
+/* 呼吸层始终保持同一动画实例；表情状态的微动效在内层切换。 */
+.pet-sprite__visual[data-state='happy'] {
+  animation: pet-bounce 0.9s ease-in-out infinite;
+}
+
+.pet-sprite__visual[data-state='sleepy'] {
+  animation: pet-drowse 4s ease-in-out infinite;
+}
+
+.pet-sprite__body[data-animation-paused='true'],
+.pet-sprite__visual[data-animation-paused='true'] {
+  animation-play-state: paused;
+}
+
+@keyframes pet-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: translateY(-0.5px) scale(1.006);
+  }
+}
+
+@keyframes pet-bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  45% {
+    transform: translateY(-3px) scale(1.01);
+  }
+}
+
+@keyframes pet-drowse {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-0.4deg);
+  }
+  50% {
+    transform: translateY(1px) rotate(0.4deg);
+  }
+}
+
+@keyframes pet-focus {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
+}
+
+@keyframes pet-shake {
+  0%,
+  100% {
+    transform: rotate(-1.6deg);
+  }
+  50% {
+    transform: rotate(1.6deg);
+  }
+}
+
+@keyframes pet-celebrate {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-5px) scale(1.03) rotate(-2deg);
+  }
+  70% {
+    transform: translateY(-2px) scale(1.01) rotate(2deg);
+  }
+}
+
+/* ---------- 气泡区：300×140，可溢出 ---------- */
+
+/* 气泡区不接收指针事件；气泡本身恢复接收（尖角也不得抢精灵边缘点击） */
+.bubble-area {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 300px;
+  height: 140px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.bubble {
+  position: relative;
+  min-width: 120px;
+  min-height: 34px;
+  max-width: 280px;
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 18px rgba(18, 32, 74, 0.16);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  pointer-events: auto;
+  animation: bubble-in 150ms ease-out both;
+  -webkit-app-region: no-drag;
+}
+
+/* 指向精灵的小尖角（03 §8：尖角始终不遮挡精灵脸） */
+.bubble::before {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: inherit;
+  content: '';
+  transform: translateX(-50%) rotate(45deg);
+  /* 尖角是装饰：不得抢精灵底边的点击（docs/13: 20 次边缘点击有 5 次落到尖角） */
+  pointer-events: none;
+}
+
+.bubble__text {
+  position: relative;
+  z-index: 1;
+  display: block;
+  word-break: break-word;
+}
+
+.bubble--error {
+  background: rgba(209, 47, 63, 0.96);
+  color: #fff;
+}
+
+.bubble__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.bubble__actions button {
+  padding: 4px 6px;
+  border: 0;
+  border-radius: 5px;
+  color: #2f4bc0;
+  background: #eaf0ff;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.bubble__actions button:focus-visible {
+  outline: 2px solid #4d6bfe;
+}
+
+/* ---------- 任务提醒卡（0.4.2）：大标题 + 强调色 + 轻微 pulse ---------- */
+
+/* 提醒卡与 HUD 由 App 二选一渲染，整体仍限制在 300×140 气泡区内。
+   CSS px = DIP，100%/150% DPI 下字号/尺寸一致可读；标题最多三行（≈122px 总高），
+   避免长文案/汇总文本撑出气泡区。 */
+.bubble--reminder {
+  width: 280px;
+  max-width: 280px;
+  padding: 9px 12px 10px;
+  border: 1px solid rgba(229, 72, 77, 0.45);
+  border-left: 3px solid #e5484d;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fff7f7 0%, #ffffff 70%);
+  box-shadow:
+    0 8px 20px rgba(179, 38, 52, 0.18),
+    0 0 0 0 rgba(229, 72, 77, 0.4);
+  cursor: default;
+  animation:
+    bubble-in 150ms ease-out both,
+    bubble-reminder-pulse 2.4s ease-in-out 0.2s infinite;
+}
+
+/* 尖角跟随浅色底（继承渐变会让小方块出现条纹） */
+.bubble--reminder::before {
+  background: #fff7f7;
+}
+
+.bubble__eyebrow {
+  display: block;
+  color: #b32634;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+}
+
+.bubble__title {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 2px;
+  color: #1b2450;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  word-break: break-word;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.bubble--reminder .bubble__actions {
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 7px;
+}
+
+/* 主操作「打开任务清单」实心强调色；「关闭」弱化为描边 */
+.bubble__actions .bubble__action {
+  padding: 4px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #2f4bc0;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.bubble__actions .bubble__action--primary {
+  background: #e5484d;
+  color: #fff;
+}
+
+.bubble__actions .bubble__action--primary:hover {
+  background: #c93b40;
+}
+
+.bubble__actions .bubble__action--ghost {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(91, 106, 148, 0.35);
+  color: #5b6a94;
+}
+
+.bubble__actions .bubble__action--ghost:hover {
+  background: #f1f4fb;
+}
+
+/* 轻微 pulse：只做外发光，不改变容器尺寸/位置（命中矩形上报不受影响） */
+@keyframes bubble-reminder-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 20px rgba(179, 38, 52, 0.18),
+      0 0 0 0 rgba(229, 72, 77, 0.38);
+  }
+  60% {
+    box-shadow:
+      0 8px 20px rgba(179, 38, 52, 0.22),
+      0 0 0 5px rgba(229, 72, 77, 0);
+  }
+}
+
+@keyframes bubble-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ---------- HUD 常驻紧急任务卡片（0.3.2 C-02；契约 1.9） ---------- */
+
+.hud {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 280px;
+  max-width: calc(100vw - 24px);
+  max-height: 140px;
+  padding: 7px 9px;
+  overflow: hidden;
+  border: 1px solid rgba(229, 72, 77, 0.42);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 8px 22px rgba(18, 32, 74, 0.2);
+  font-size: 12px;
+  line-height: 1.35;
+  pointer-events: auto;
+  animation: hud-in 160ms ease-out both;
+  -webkit-app-region: no-drag;
+}
+
+@keyframes hud-in {
+  from {
+    transform: translateY(4px) scale(0.97);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* 每次状态变化重放一次轻量高亮：新增/完成/降级移除都有视觉反馈（不保留 ghost 行） */
+.hud__flash {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: hud-flash 420ms ease-out both;
+}
+
+@keyframes hud-flash {
+  0% {
+    box-shadow: inset 0 0 0 2px rgba(229, 72, 77, 0.55);
+  }
+  100% {
+    box-shadow: inset 0 0 0 0 rgba(229, 72, 77, 0);
+  }
+}
+
+.hud__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.hud__title {
+  margin: 0;
+  color: #b32634;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.hud__open {
+  flex: 0 0 auto;
+  padding: 2px 9px;
+  border: 0;
+  border-radius: 999px;
+  background: #e5484d;
+  color: #fff;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hud__open:hover {
+  background: #c93b40;
+}
+
+.hud__open:focus-visible {
+  outline: 2px solid #4d6bfe;
+  outline-offset: 2px;
+}
+
+.hud__badge {
+  align-self: flex-start;
+  margin: 0;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #fde8ea;
+  color: #b32634;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.hud__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hud__row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 1px 4px;
+  border-radius: 6px;
+  transition: background-color 150ms ease;
+}
+
+.hud__row--urgent {
+  background: #fff5f5;
+}
+
+/* 新出现/新变紧急的任务行：短促红色 pulse（1.2s 后由组件移除 class） */
+.hud__row--pulse {
+  animation: hud-row-pulse 1.2s ease-out both;
+}
+
+@keyframes hud-row-pulse {
+  0% {
+    background: #fde8ea;
+    box-shadow: inset 2px 0 0 #e5484d;
+  }
+  60% {
+    background: #fff5f5;
+    box-shadow: inset 2px 0 0 #e5484d;
+  }
+  100% {
+    background: transparent;
+    box-shadow: inset 2px 0 0 transparent;
+  }
+}
+
+.hud__dot {
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.hud__task {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
+}
+
+.hud__project {
+  flex: 0 0 auto;
+  max-width: 96px;
+  overflow: hidden;
+  color: #6b3fc4;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hud__task-title {
+  overflow: hidden;
+  color: #12204a;
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hud__due {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.hud__more {
+  margin: 0;
+  color: #8b93a7;
+  font-size: 11px;
+}
+
+/* ---------- M0 调试元素 ---------- */
+
+/* bootstrap 失败提示条（M1 起改为窗口内错误态） */
+.error-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  padding: 5px 8px;
+  border-radius: 0 0 8px 8px;
+  background: rgba(198, 40, 56, 0.94);
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+/* ipcVersion / dayKey 调试角标（M0 专用，M1 移除） */
+.debug {
+  position: absolute;
+  right: 4px;
+  bottom: 2px;
+  max-width: 96%;
+  overflow: hidden;
+  color: rgba(30, 50, 120, 0.72);
+  font-size: 9px;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pet-sprite__body,
+  .pet-sprite__visual,
+  .bubble,
+  .bubble--reminder,
+  .hud,
+  .hud__flash,
+  .hud__row--pulse {
+    animation: none;
+  }
+}

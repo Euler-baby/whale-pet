@@ -1,0 +1,52 @@
+{
+  "name": "deepseek-whale-pet",
+  "version": "0.4.2",
+  "private": true,
+  "description": "DeepSeek 鲸鱼娘桌宠 —— 本地优先、断网可用的 Windows 桌面学习伙伴",
+  "license": "MIT",
+  "author": "whale-pet contributors",
+  "main": "./out/main/index.js",
+  "packageManager": "pnpm@12.3.4",
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=11"
+  },
+  "scripts": {
+    "dev": "electron-vite dev",
+    "start": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "lint": "eslint . --max-warnings=0 && prettier --check .",
+    "format": "prettier --write .",
+    "test": "vitest run --configLoader native",
+    "test:watch": "vitest --configLoader native",
+    "build": "pnpm typecheck && electron-vite build",
+    "dist": "pnpm build && electron-builder",
+    "smoke": "playwright test -c tests/smoke/playwright.config.ts",
+    "verify": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "44.9.0",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^6.0.0",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.13.0",
+    "jsdom": "^30.1.3",
+    "prettier": "^3.9.10",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.71.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  }
+}
